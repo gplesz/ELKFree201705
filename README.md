@@ -17,3 +17,15 @@ Telepítve a központi szerveren itt van: C:\ProgramData\chocolatey\lib\elastics
 
 ### Kibana
 Telepítve a központi szerveren ide: C:\ProgramData\chocolatey\lib\kibana\kibana-4.5.4-windows, a konfigurációja pedig a C:\ProgramData\chocolatey\lib\kibana\kibana-4.5.4-windows\config\kibana.yml.
+
+# Tanfolyam
+
+1. Telepítjük és beállítjuk az Elasticsearch szerviz automatikus indítását 
+ - C:\ProgramData\chocolatey\lib\elasticsearch\tools\elasticsearch-2.3.1\bin>**service install**
+ - C:\ProgramData\chocolatey\lib\elasticsearch\tools\elasticsearch-2.3.1\bin>**service manager**
+2. Megadjuk a különböző szervizek függőségeit:
+ - Kibana -(szüksége van)-> Elasticsearch
+  - **sc config "Kibana" depend="elasticsearch-service-x64"**
+ - Logstash -(szüksége van)-> RabbitMQ
+ - Logstash -(szüksége van)-> Elasticsearch
+   - **sc config "Logstash" depend="elasticsearch-service-x64/RabbitMQ"**
