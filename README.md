@@ -29,3 +29,9 @@ Telepítve a központi szerveren ide: C:\ProgramData\chocolatey\lib\kibana\kiban
  - Logstash -(szüksége van)-> RabbitMQ
  - Logstash -(szüksége van)-> Elasticsearch
    - **sc config "Logstash" depend="elasticsearch-service-x64/RabbitMQ"**
+
+3. Engedélyezzük a RabbitMQ portját a host felé a tűzfalon
+  - **netsh advfirewall firewall add rule name="Open Port 5672" dir=in action=allow protocol=TCP localport=5672**
+
+4. Engedélyezzük a Kibana portját a host felé a tűzfalon
+  - **netsh advfirewall firewall add rule name="Open Port 5601" dir=in action=allow protocol=TCP localport=5601**
